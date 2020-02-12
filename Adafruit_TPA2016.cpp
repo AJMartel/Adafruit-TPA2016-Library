@@ -186,6 +186,14 @@ void Adafruit_TPA2016::setLimitLevel(uint8_t limit) {
   write8(TPA2016_AGCLIMIT, agc);
 }
 
+void Adafruit_TPA2016::setNoiseGateThreshold(uint8_t thresh){ //Added by VK4PLN
+  if (thresh > 3) return; // max threshold is 3 (20mV)
+  uint8_t agc = read8(TPA2016_AGCLIMIT);
+  agc &= ~(0x20);  // mask off bottom 5 bits
+  agc |= thresh;        // set the limit level.
+  write8(TPA2016_AGCLIMIT, agc);
+}
+
 /*!
  *    @brief  Sets max gain by writing to TPA2016_AGC.
  *    @param  x
