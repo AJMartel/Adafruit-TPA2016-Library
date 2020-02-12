@@ -88,6 +88,7 @@ public:
 
   // Register #7
   void setAGCCompression(uint8_t x);
+  void setNoiseGateThreshold(uint8_t thresh);  //Added by VK4PLN
   void setAGCMaxGain(uint8_t x);
 
 private:
